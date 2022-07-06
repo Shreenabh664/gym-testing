@@ -189,7 +189,7 @@ class CartPoleEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
 
     def reset(self):
         state2 = self.np_random.uniform(low=0, high=0, size=(1,))
-        state3 = self.np_random.uniform(low=0.0872665, high=0.0872665, size=(1,)) #set at 5 deg const
+        state3 = self.np_random.uniform(low=0.03, high=0.03, size=(1,)) #set at 1.7 deg const
         state4 = self.np_random.uniform(low=0, high=0, size=(1,))
         state1 = self.np_random.uniform(low=0, high=0, size=(1,))
         self.state=np.concatenate((state1, state2, state3, state4))
