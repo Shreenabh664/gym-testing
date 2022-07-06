@@ -187,7 +187,7 @@ class CartPoleEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
         self.renderer.render_step()
         return np.array(self.state, dtype=np.float32), reward, done, {}
 
-    def reset1(self): #replicating openai
+    def reset(self): #replicating openai
         state2 = self.np_random.uniform(low=-0.05, high=0.05, size=(1,))
         state3 = self.np_random.uniform(low=-0.05, high=0.05, size=(1,)) 
         state4 = self.np_random.uniform(low=-0.05, high=0.05, size=(1,))
@@ -196,7 +196,7 @@ class CartPoleEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
         self.steps_beyond_done = None
         return np.array(self.state, dtype=np.float32)
     
-    def reset(
+    def reset1(
         self,
         *,
         seed: Optional[int] = None,
