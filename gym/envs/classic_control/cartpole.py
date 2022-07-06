@@ -187,7 +187,7 @@ class CartPoleEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
         self.renderer.render_step()
         return np.array(self.state, dtype=np.float32), reward, done, {}
 
-    def reset(self): #replicating openai
+    def reset1(self): #replicating openai
         state2 = self.np_random.uniform(low=-0.05, high=0.05, size=(1,))
         state3 = self.np_random.uniform(low=-0.05, high=0.05, size=(1,)) 
         state4 = self.np_random.uniform(low=-0.05, high=0.05, size=(1,))
@@ -195,6 +195,28 @@ class CartPoleEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
         self.state=np.concatenate((state1, state2, state3, state4))
         self.steps_beyond_done = None
         return np.array(self.state, dtype=np.float32)
+    
+    def reset(
+        self,
+        *,
+        seed: Optional[int] = None,
+        return_info: bool = False,
+        options: Optional[dict] = None,
+    ):
+        super().reset(seed=seed)
+        # Note that if you use custom reset bounds, it may lead to out-of-bound
+        # state/observations.
+        low, high = utils.maybe_parse_reset_bounds(
+            options, -0.05, 0.05  # default low
+        )  # default high
+        self.state = self.np_random.uniform(low=low, high=high, size=(4,))
+        self.steps_beyond_done = None
+        self.renderer.reset()
+        self.renderer.render_step()
+        if not return_info:
+            return np.array(self.state, dtype=np.float32)
+        else:
+            return np.array(self.state, dtype=np.float32), {}
 
     def render(self, mode="human"):
         if self.render_mode is not None:
