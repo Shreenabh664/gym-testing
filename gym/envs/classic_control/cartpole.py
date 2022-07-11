@@ -202,7 +202,7 @@ class CartPoleEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
     def reset(
         self,
         *,
-        seed: Optional[int] = 2,
+        seed: Optional[int] = 101,
         return_info: bool = False,
         options: Optional[dict] = None,
     ):
