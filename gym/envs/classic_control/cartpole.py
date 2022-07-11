@@ -188,14 +188,13 @@ class CartPoleEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
         return np.array(self.state, dtype=np.float32), reward, done, {}
 
     def reset(self): #trying restrictive variation in initial stage
-        int n_seed = 2
-        np.random.seed(n_seed)
+        np.random.seed(2)
         state2 = self.np_random.uniform(low=0.0, high=0.0, size=(1,))
-        np.random.seed(n_seed)
-        state3 = self.np_random.uniform(low=-0.0349066, high=0.0349066, size=(1,))
-        np.random.seed(n_seed)
+        np.random.seed(2)
+        state3 = self.np_random.uniform(low=-0.0349066, high=0.0349066, size=(1,)) #2 deg
+        np.random.seed(2)
         state4 = self.np_random.uniform(low=0.0, high=0.0, size=(1,))
-        np.random.seed(n_seed)
+        np.random.seed(2)
         state1 = self.np_random.uniform(low=0.0, high=0.0, size=(1,))
         self.state=np.concatenate((state1, state2, state3, state4))
         self.steps_beyond_done = None
