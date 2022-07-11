@@ -189,7 +189,7 @@ class CartPoleEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
 
     def reset(self): #trying restrictive variation in initial stage
         state2 = self.np_random.uniform(low=0.0, high=0.0, size=(1,))
-        np.random.seed(2)
+        #np.random.seed(2)
         state3 = self.np_random.uniform(low=-0.174533, high=0.174533, size=(1,)) #10 deg
         state4 = self.np_random.uniform(low=0.0, high=0.0, size=(1,))
         state1 = self.np_random.uniform(low=0.0, high=0.0, size=(1,))
