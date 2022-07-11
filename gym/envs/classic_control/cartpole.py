@@ -186,8 +186,10 @@ class CartPoleEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
 
         self.renderer.render_step()
         return np.array(self.state, dtype=np.float32), reward, done, {}
+    
+    
 
-    def reset(self): #trying restrictive variation in initial stage
+    def reset2(self): #trying restrictive variation in initial stage
         state2 = self.np_random.uniform(low=0.0, high=0.0, size=(1,))
         #np.random.seed(2)
         state3 = self.np_random.uniform(low=-0.0349066, high=0.0349066, size=(1,)) #2 deg
@@ -197,10 +199,10 @@ class CartPoleEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
         self.steps_beyond_done = None
         return np.array(self.state, dtype=np.float32)
     
-    def reset1(
+    def reset(
         self,
         *,
-        seed: Optional[int] = None,
+        seed: Optional[int] = 2,
         return_info: bool = False,
         options: Optional[dict] = None,
     ):
@@ -210,7 +212,13 @@ class CartPoleEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
         low, high = utils.maybe_parse_reset_bounds(
             options, -0.05, 0.05  # default low
         )  # default high
-        self.state = self.np_random.uniform(low=low, high=high, size=(4,))
+        #self.state = self.np_random.uniform(low=low, high=high, size=(4,))
+        state2 = self.np_random.uniform(low=0.0, high=0.0, size=(1,))
+        #np.random.seed(2)
+        state3 = self.np_random.uniform(low=-0.0349066, high=0.0349066, size=(1,)) #2 deg
+        state4 = self.np_random.uniform(low=0.0, high=0.0, size=(1,))
+        state1 = self.np_random.uniform(low=0.0, high=0.0, size=(1,))
+        self.state=np.concatenate((state1, state2, state3, state4))
         self.steps_beyond_done = None
         self.renderer.reset()
         self.renderer.render_step()
