@@ -213,11 +213,11 @@ class CartPoleEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
             options, -0.05, 0.05  # default low
         )  # default high
         #self.state = self.np_random.uniform(low=low, high=high, size=(4,))
-        state2 = self.np_random.uniform(low=-0.05, high=0.05, size=(1,))
+        state2 = self.np_random.uniform(low=0.0, high=0.0, size=(1,))
         #np.random.seed(2)
         state3 = self.np_random.uniform(low=-0.0349066, high=0.0349066, size=(1,)) #2 deg
-        state4 = self.np_random.uniform(low=-0.05, high=0.05, size=(1,))
-        state1 = self.np_random.uniform(low=-0.05, high=0.05, size=(1,))
+        state4 = self.np_random.uniform(low=0.0, high=0.0, size=(1,))
+        state1 = self.np_random.uniform(low=0.0, high=0.0, size=(1,))
         self.state=np.concatenate((state1, state2, state3, state4))
         self.steps_beyond_done = None
         self.renderer.reset()
