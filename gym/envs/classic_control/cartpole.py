@@ -99,7 +99,7 @@ class CartPoleEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
 
         # Angle at which to fail the episode
         self.theta_threshold_radians = 90 * 2 * math.pi / 360
-        self.x_threshold = 24
+        self.x_threshold = 4.8
 
         # Angle limit set to 2 * theta_threshold_radians so failing observation
         # is still within bounds.
@@ -215,7 +215,7 @@ class CartPoleEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
         #self.state = self.np_random.uniform(low=low, high=high, size=(4,))
         state2 = self.np_random.uniform(low=0.0, high=0.0, size=(1,))
         #np.random.seed(2)
-        state3 = self.np_random.uniform(low=-1, high=1, size=(1,)) #1 rad
+        state3 = self.np_random.uniform(low=-0.05, high=0.05, size=(1,)) #1 rad
         state4 = self.np_random.uniform(low=0.0, high=0.0, size=(1,))
         state1 = self.np_random.uniform(low=0.0, high=0.0, size=(1,))
         self.state=np.concatenate((state1, state2, state3, state4))
