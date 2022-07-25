@@ -93,7 +93,7 @@ class CartPoleEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
         self.total_mass = self.masspole + self.masscart
         self.length = 0.5  # actually half the pole's length
         self.polemass_length = self.masspole * self.length
-        self.force_mag = 60.0
+        self.force_mag = 10.0
         self.tau = 0.02  # seconds between state updates
         self.kinematics_integrator = "euler"
 
@@ -204,7 +204,7 @@ class CartPoleEnv(gym.Env[np.ndarray, Union[int, np.ndarray]]):
         #self.state = self.np_random.uniform(low=low, high=high, size=(4,))
         state2 = self.np_random.uniform(low=-0.05, high=0.05, size=(1,))
         #np.random.seed(2)
-        state3 = self.np_random.uniform(low=-0.2, high=0.2, size=(1,)) #initial angle
+        state3 = self.np_random.uniform(low=-0.4, high=0.4, size=(1,)) #initial angle
         state4 = self.np_random.uniform(low=-0.05, high=0.05, size=(1,))
         state1 = self.np_random.uniform(low=-0.05, high=0.05, size=(1,))
         self.state=np.concatenate((state1, state2, state3, state4))
